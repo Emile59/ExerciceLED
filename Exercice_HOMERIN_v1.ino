@@ -23,8 +23,8 @@ void setup()
 {
   Serial.begin(115200);
 
-  pinMode(BUTTON, INPUT_PULLUP);     // Déclaration du bouton poussoir sur la pin 2
-  pinMode(LED, OUTPUT);       // Déclaration de la LED
+  pinMode(BUTTON, INPUT_PULLUP);     // Déclaration du bouton poussoir
+  pinMode(LED, OUTPUT);              // Déclaration de la LED
 
   randomSeed(analogRead(0));    // Initialise le générateur de nombres aléatoires par le bruit aléatoire provenant de l'environnement
                                 // Ainsi la suite de nombres aléatoires démarre à un endroit arbitraire
