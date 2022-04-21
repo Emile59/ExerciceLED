@@ -4,7 +4,7 @@
 
      - HOMERIN Emile
      - 21/04/2022
-     - Version 1.1 (sans matériel permettant de tester et sans utilisation de tâches)
+     - Version 1 (sans matériel permettant de tester)
 
      ---------------------------------------------------------------------------------- */
 
@@ -50,14 +50,15 @@ void loop()
   if ( digitalRead(BUTTON) == LOW  &&  appui == 1)       // Si l'utilisateur appuie sur le bouton et que appui = 1 alors on démarre le chronomètre
   {
     digitalWrite(LED, HIGH);        // Lorsque l'utilisateur appui sur le bouton pour reproduire le délai la LED S'allume
-    timer = 1;               // et le chrono se lance
+    timer = millis();               // On initialise le chronomètre au nombre de millisecondes qui se sont écoulées depuis le début du programme 
     appui = 2;                      // Pour ne pas ré-initialiser le timer 
   }
 
   if (digitalRead(BUTTON) == HIGH  &&  appui == 2)     // Si l'utilisateur relache le bouton et que appui = 2 alors on calcule delta
   {
     digitalWrite(LED, LOW);         // On éteind la LED
-    delta = abs(delay2 - timer);    // Calcul de delta (on peut enlever la valeur absulue afin de connaitre le signe de l'erreur)
+    delta = abs(delay2 - (millis() - timer));    // Calcul de delta (on peut enlever la valeur absolue afin de connaitre le signe de l'erreur)
+                                                 // En effet millis() - timer correspond au temps de pression du bouton par l'utilisateur
 
     Serial.print(" Résultat : ");   // Affichage du résultat sur le port série
     Serial.print(delta);
@@ -66,8 +67,4 @@ void loop()
     timer = 0;         // Réinitialisation du chronomètre
     appui = 0;         // Permet de relancer le processus lors d'un appui sur le bouton poussoir
   }
-
-  if (timer > 0)       // Si le timer est différent de 0 on l'incrémente à chaque itération 
-    timer++;
-
 }
