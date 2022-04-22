@@ -13,6 +13,8 @@
 #define LED 32          // Definition des pins correspondant à la LED et au bouton poussoir
 #define BUTTON 14
 
+LiquidCrystal lcd(19, 23, 18, 17, 16, 15);   // Définition de l'écran
+
 int delay1, delay2;       // Durées aléatoires nécessaires à la réalisation de l'application
 int appui = 0;            // Vaut 0 dans le cas du 1er appui (lancement de l'application), 1 lorsqu'on détecte ensuite un front descendant (l'utilisateur appui sur 
                           // le bouton), puis 2 lorsqu'on detecte un front montant (l'utilisateur relache le bouton)
