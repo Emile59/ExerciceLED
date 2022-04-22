@@ -51,12 +51,12 @@ void loop()
 
     digitalWrite(LED, HIGH);    // Puis la LED s'allume
     delay(delay2);              // pendant 1 à 5 secondes aléatoirement
-       
+
+    digitalWrite(LED, LOW);     // Enfin la LED s'éteind à la fin du délai
+               
     Serial.print("Temps d'allumage de la LED : ");    // Permet de vérifier le bon fonctionnement de l'application
     Serial.print(delay2);
     Serial.println(" ms");
-
-    digitalWrite(LED, LOW);     // Enfin la LED s'éteind à la fin du délai
 
     appui = 1;     // On attend à présent une action de l'utilisateur
   }
